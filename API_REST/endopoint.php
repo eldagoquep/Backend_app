@@ -1,4 +1,6 @@
 <?php 
+
+//Para implementar en el functions.php de WP y tener acceso a la data
 add_action ('rest_api_init', function () {
   register_rest_route('pokemonplugin/v1','/pokemons/(?P<id>\d+)', array (
        'methods'   => 'GET',
