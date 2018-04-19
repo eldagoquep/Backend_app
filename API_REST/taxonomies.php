@@ -1,4 +1,7 @@
 <?php
+add_action( 'init', 'weaknesses_taxonomy' );
+add_action( 'init', 'resistant_taxonomy' );
+add_action( 'init', 'types_taxonomy' );
 
 // Registrando Custom Taxonomy weaknesses
 function weaknesses_taxonomy() {
@@ -45,7 +48,6 @@ function weaknesses_taxonomy() {
 	register_taxonomy( 'weaknesses', array( 'pokemons_post_type' ), $args );
 
 }
-add_action( 'init', 'weaknesses_taxonomy', 0 );
 
 // Registrando Custom Taxonomy resistant
 function resistant_taxonomy() {
@@ -92,7 +94,6 @@ function resistant_taxonomy() {
 	register_taxonomy( 'resistant', array( 'pokemons_post_type' ), $args );
 
 }
-add_action( 'init', 'resistant_taxonomy', 0 );
 
 // Registrando Custom Taxonomy types
 function types_taxonomy() {
@@ -139,5 +140,3 @@ function types_taxonomy() {
 	register_taxonomy( 'types', array( 'pokemons_post_type' ), $args );
 
 }
-add_action( 'init', 'types_taxonomy', 0 );
-

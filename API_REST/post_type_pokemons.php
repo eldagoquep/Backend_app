@@ -1,7 +1,5 @@
 <?php
 
-require ('taxonomies.php');
-
 // Registrando Custom Post Type
 function pokemons_post_type() {
 
@@ -97,7 +95,7 @@ register_meta( 'post',
                  'sanitize_callback' => 'cyb_sanitize_checkbox_values',
                  'auth_callback'     => 'cyb_custom_fields_auth_callback'
                ]
-  ); 
+  );
 }
 
 function cyb_sanitize_checkbox_values( $value ) {
@@ -152,7 +150,7 @@ function wpt_add_pokemons_metaboxes() {
       'post',
       'normal',
       'default'
-    ); 
+    );
 
 }
 
@@ -178,13 +176,13 @@ function wpt_weaknesses( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_weaknesses', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -256,7 +254,7 @@ function wpt_weaknesses( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -283,13 +281,13 @@ function wpt_resistant( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_resistant', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -361,7 +359,7 @@ function wpt_resistant( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -387,13 +385,13 @@ function wpt_types( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_types', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -465,7 +463,7 @@ function wpt_types( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -474,12 +472,12 @@ function wpt_types( $post ) {
 //Salvando los datos
 add_action( 'save_post', 'cyb_save_custom_fields', 10, 18 );
 function cyb_save_custom_fields( $post_id, $post ){
-    
+
     // comprobamos el nonce como medida de seguridad
     if ( ! isset( $_POST['cyb_meta_box_noncename'] ) || ! wp_verify_nonce( $_POST['cyb_meta_box_noncename'], 'cyb_meta_box' ) ) {
         return;
     }
-            
+
     // Si hemos recibido valor de un custom field, los actualizamos el saneado/validación se hace automáticamente en el callback
     if( isset( $_POST['cyb_types'] ) ) {
         update_post_meta( $post_id, 'cyb_types', $_POST['cyb_types'] );
@@ -488,17 +486,16 @@ function cyb_save_custom_fields( $post_id, $post ){
         // $_POST['cyb_types'] no tiene valor establecido
         delete_post_meta( $post_id, 'cyb_types' );
     }
-	            
+
 		if( isset( $_POST['cyb_resistant'] ) ) {
         update_post_meta( $post_id, 'cyb_resistant', $_POST['cyb_resistant'] );
     } else {
         delete_post_meta( $post_id, 'cyb_resistant' );
     }
-	
+
 	  if( isset( $_POST['cyb_types'] ) ) {
         update_post_meta( $post_id, 'cyb_types', $_POST['cyb_types'] );
     } else {
         delete_post_meta( $post_id, 'cyb_types' );
     }
 }
-
