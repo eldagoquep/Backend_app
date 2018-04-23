@@ -1,38 +1,36 @@
 <?php
 
-require ('taxonomies.php');
-
 // Registrando Custom Post Type
 function pokemons_post_type() {
 
 	$labels = array(
-		'name'                  => _x( 'Pokemons', 'Post Type General Name', 'pokemons_domain' ),
-		'singular_name'         => _x( 'Pokemon', 'Post Type Singular Name', 'pokemons_domain' ),
-		'menu_name'             => __( 'Pokemons', 'pokemons_domain' ),
-		'name_admin_bar'        => __( 'Pokemons', 'pokemons_domain' ),
-		'archives'              => __( 'Archivo de pokemons', 'pokemons_domain' ),
-		'attributes'            => __( 'Atributo de pokemon', 'pokemons_domain' ),
-		'parent_item_colon'     => __( 'Pokedex', 'pokemons_domain' ),
-		'all_items'             => __( 'Todos', 'pokemons_domain' ),
-		'add_new_item'          => __( 'Agregar nuevo', 'pokemons_domain' ),
-		'add_new'               => __( 'Agregar Nuevo', 'pokemons_domain' ),
-		'new_item'              => __( 'Nuevo', 'pokemons_domain' ),
-		'edit_item'             => __( 'Editar pokemon', 'pokemons_domain' ),
-		'update_item'           => __( 'Actualizar', 'pokemons_domain' ),
-		'view_item'             => __( 'Ver pokemon', 'pokemons_domain' ),
-		'view_items'            => __( 'Ver pokemons', 'pokemons_domain' ),
-		'search_items'          => __( 'Buscar pokemon', 'pokemons_domain' ),
-		'not_found'             => __( 'No encontrado', 'pokemons_domain' ),
-		'not_found_in_trash'    => __( 'No encontrado en papelera', 'pokemons_domain' ),
-		'featured_image'        => __( 'Agregar imagen', 'pokemons_domain' ),
-		'set_featured_image'    => __( 'Asignar imagen destacada', 'pokemons_domain' ),
-		'remove_featured_image' => __( 'Quitar imagen destacada', 'pokemons_domain' ),
-		'use_featured_image'    => __( 'Usar imagen destacada', 'pokemons_domain' ),
-		'insert_into_item'      => __( 'Agregar a pokemon', 'pokemons_domain' ),
-		'uploaded_to_this_item' => __( 'Subir pokemon', 'pokemons_domain' ),
-		'items_list'            => __( 'Lista de pokemons', 'pokemons_domain' ),
-		'items_list_navigation' => __( 'Navegacion de pokemons', 'pokemons_domain' ),
-		'filter_items_list'     => __( 'Filtro de pokemon', 'pokemons_domain' ),
+		'name'                  => _x( 'Pokemons', 'Post Type General Name', 'pokemons_plugin_dg' ),
+		'singular_name'         => _x( 'Pokemon', 'Post Type Singular Name', 'pokemons_plugin_dg' ),
+		'menu_name'             => __( 'Pokemons', 'pokemons_plugin_dg' ),
+		'name_admin_bar'        => __( 'Pokemons', 'pokemons_plugin_dg' ),
+		'archives'              => __( 'Archivo de pokemons', 'pokemons_plugin_dg' ),
+		'attributes'            => __( 'Atributo de pokemon', 'pokemons_plugin_dg' ),
+		'parent_item_colon'     => __( 'Pokedex', 'pokemons_plugin_dg' ),
+		'all_items'             => __( 'Todos', 'pokemons_plugin_dg' ),
+		'add_new_item'          => __( 'Agregar nuevo', 'pokemons_plugin_dg' ),
+		'add_new'               => __( 'Agregar Nuevo', 'pokemons_plugin_dg' ),
+		'new_item'              => __( 'Nuevo', 'pokemons_plugin_dg' ),
+		'edit_item'             => __( 'Editar pokemon', 'pokemons_plugin_dg' ),
+		'update_item'           => __( 'Actualizar', 'pokemons_plugin_dg' ),
+		'view_item'             => __( 'Ver pokemon', 'pokemons_plugin_dg' ),
+		'view_items'            => __( 'Ver pokemons', 'pokemons_plugin_dg' ),
+		'search_items'          => __( 'Buscar pokemon', 'pokemons_plugin_dg' ),
+		'not_found'             => __( 'No encontrado', 'pokemons_plugin_dg' ),
+		'not_found_in_trash'    => __( 'No encontrado en papelera', 'pokemons_plugin_dg' ),
+		'featured_image'        => __( 'Agregar imagen', 'pokemons_plugin_dg' ),
+		'set_featured_image'    => __( 'Asignar imagen destacada', 'pokemons_plugin_dg' ),
+		'remove_featured_image' => __( 'Quitar imagen destacada', 'pokemons_plugin_dg' ),
+		'use_featured_image'    => __( 'Usar imagen destacada', 'pokemons_plugin_dg' ),
+		'insert_into_item'      => __( 'Agregar a pokemon', 'pokemons_plugin_dg' ),
+		'uploaded_to_this_item' => __( 'Subir pokemon', 'pokemons_plugin_dg' ),
+		'items_list'            => __( 'Lista de pokemons', 'pokemons_plugin_dg' ),
+		'items_list_navigation' => __( 'Navegacion de pokemons', 'pokemons_plugin_dg' ),
+		'filter_items_list'     => __( 'Filtro de pokemon', 'pokemons_plugin_dg' ),
 	);
 	$rewrite = array(
 		'slug'                  => 'pokemons',
@@ -41,8 +39,8 @@ function pokemons_post_type() {
 		'feeds'                 => true,
 	);
 	$args = array(
-		'label'                 => __( 'Pokemon', 'pokemons_domain' ),
-		'description'           => __( 'Pokemons Description', 'pokemons_domain' ),
+		'label'                 => __( 'Pokemon', 'pokemons_plugin_dg' ),
+		'description'           => __( 'Pokemons Description', 'pokemons_plugin_dg' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'post-formats' ),
 		'taxonomies'            => array( 'weaknesses_taxonomy', 'resistant_taxonomy', ' types_taxonomy'),
@@ -74,7 +72,7 @@ function pokemons_register_meta_fields() {
 register_meta( 'post',
                'cyb_weaknesses',
                [
-                 'description'      => _x( 'Weaknesses', 'meta description', 'cyb-textdomain' ),
+                 'description'      => _x( 'Weaknesses', 'meta description', 'pokemons_plugin_dg' ),
                  'single'           => false,
                  'sanitize_callback' => 'cyb_sanitize_checkbox_values',
                  'auth_callback'     => 'cyb_custom_fields_auth_callback'
@@ -83,7 +81,7 @@ register_meta( 'post',
 register_meta( 'post',
                'cyb_resistant',
                [
-                 'description'      => _x( 'Resistant', 'meta description', 'cyb-textdomain' ),
+                 'description'      => _x( 'Resistant', 'meta description', 'pokemons_plugin_dg' ),
                  'single'           => false,
                  'sanitize_callback' => 'cyb_sanitize_checkbox_values',
                  'auth_callback'     => 'cyb_custom_fields_auth_callback'
@@ -92,12 +90,12 @@ register_meta( 'post',
 register_meta( 'post',
                'cyb_types',
                [
-                 'description'      => _x( 'Types', 'meta description', 'cyb-textdomain' ),
+                 'description'      => _x( 'Types', 'meta description', 'pokemons_plugin_dg' ),
                  'single'           => false,
                  'sanitize_callback' => 'cyb_sanitize_checkbox_values',
                  'auth_callback'     => 'cyb_custom_fields_auth_callback'
                ]
-  ); 
+  );
 }
 
 function cyb_sanitize_checkbox_values( $value ) {
@@ -152,7 +150,7 @@ function wpt_add_pokemons_metaboxes() {
       'post',
       'normal',
       'default'
-    ); 
+    );
 
 }
 
@@ -178,13 +176,13 @@ function wpt_weaknesses( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_weaknesses', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -256,7 +254,7 @@ function wpt_weaknesses( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -283,13 +281,13 @@ function wpt_resistant( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_resistant', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -361,7 +359,7 @@ function wpt_resistant( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -387,13 +385,13 @@ function wpt_types( $post ) {
     $Dark = isset( $valores['Dark'] ) ? esc_attr( $valores['Dark'][0] ) : '';
     $Steel = isset( $valores['Steel'] ) ? esc_attr( $valores['Steel'][0] ) : '';
     $Fairy = isset( $valores['Fairy'] ) ? esc_attr( $valores['Fairy'][0] ) : '';
-		
+
 		wp_nonce_field( 'cyb_meta_box', 'cyb_meta_box_noncename' );
 		// La función checked() es similar a
     // if ( $current_value == "un valor") { echo ' checked="checked"' ; }
 		$current_value = get_post_meta( $post->ID, 'cyb_types', true );
 ?>
-    <p>  
+    <p>
     <input type="checkbox" name="bug" id="bug" value="1" <?php if ( isset ( $valores['bug'] ) ) checked( $valores['bug'][0], '1' ); ?> />
     <label for="bug">Bug</label>
 		</p>
@@ -465,7 +463,7 @@ function wpt_types( $post ) {
     <input type="checkbox" name="Fairy" id="Fairy" value="1" <?php if ( isset ( $valores['Fairy'] ) ) checked( $valores['Fairy'][0], '1' ); ?> />
     <label for="Fairy">Fairy</label>
 		</p>
-    
+
     <?php
 
 }
@@ -474,12 +472,12 @@ function wpt_types( $post ) {
 //Salvando los datos
 add_action( 'save_post', 'cyb_save_custom_fields', 10, 18 );
 function cyb_save_custom_fields( $post_id, $post ){
-    
+
     // comprobamos el nonce como medida de seguridad
     if ( ! isset( $_POST['cyb_meta_box_noncename'] ) || ! wp_verify_nonce( $_POST['cyb_meta_box_noncename'], 'cyb_meta_box' ) ) {
         return;
     }
-            
+
     // Si hemos recibido valor de un custom field, los actualizamos el saneado/validación se hace automáticamente en el callback
     if( isset( $_POST['cyb_types'] ) ) {
         update_post_meta( $post_id, 'cyb_types', $_POST['cyb_types'] );
@@ -488,17 +486,16 @@ function cyb_save_custom_fields( $post_id, $post ){
         // $_POST['cyb_types'] no tiene valor establecido
         delete_post_meta( $post_id, 'cyb_types' );
     }
-	            
+
 		if( isset( $_POST['cyb_resistant'] ) ) {
         update_post_meta( $post_id, 'cyb_resistant', $_POST['cyb_resistant'] );
     } else {
         delete_post_meta( $post_id, 'cyb_resistant' );
     }
-	
+
 	  if( isset( $_POST['cyb_types'] ) ) {
         update_post_meta( $post_id, 'cyb_types', $_POST['cyb_types'] );
     } else {
         delete_post_meta( $post_id, 'cyb_types' );
     }
 }
-
